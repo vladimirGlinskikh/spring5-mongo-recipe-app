@@ -18,8 +18,7 @@ apply plugin: 'org.springframework.boot'
 apply plugin: 'io.spring.dependency-management'
 apply plugin: 'jacoco'
 
-group 'kz.zhelezyaka'
-version '1.0-SNAPSHOT'
+version = '0.0.1-SNAPSHOT'
 sourceCompatibility = 1.8
 
 repositories {
@@ -28,22 +27,19 @@ repositories {
     maven { url "https://repo.spring.io/milestone" }
 }
 
+
 dependencies {
     compile('org.springframework.boot:spring-boot-starter-data-mongodb')
-    compile('org.springframework.boot:spring-boot-starter-thymeleaf')
+    implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
     compile('org.springframework.boot:spring-boot-starter-web')
     runtime('org.springframework.boot:spring-boot-devtools')
     compile 'org.webjars:bootstrap:3.3.7-1'
-    compileOnly('org.projectlombok:lombok')
+    compileOnly'org.projectlombok:lombok'
+    annotationProcessor 'org.projectlombok:lombok'
     testCompile('org.springframework.boot:spring-boot-starter-test')
-    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.7.0'
-    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.7.0'
 }
 
-test {
-    useJUnitPlatform()
-}
-
+//export test coverage
 jacocoTestReport {
     reports {
         xml.enabled true
