@@ -3,13 +3,13 @@ package kz.zhelezyaka.controllers;
 import kz.zhelezyaka.commands.RecipeCommand;
 import kz.zhelezyaka.services.ImageService;
 import kz.zhelezyaka.services.RecipeService;
-import org.apache.tomcat.util.http.fileupload.IOUtils;
+//import org.apache.tomcat.util.http.fileupload.IOUtils;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
-import javax.servlet.http.HttpServletResponse;
+//import javax.servlet.http.HttpServletResponse;
 import java.io.ByteArrayInputStream;
 import java.io.InputStream;
 
@@ -36,19 +36,19 @@ public class ImageController {
         return "redirect:/recipe/" + id + "/show";
     }
 
-    @GetMapping("recipe/{id}/recipeimage")
-    public void renderImageFromDB(@PathVariable String id, HttpServletResponse response) throws Exception {
-        RecipeCommand recipeCommand = recipeService.findCommandById(id).block();
-
-        if (recipeCommand.getImage() != null) {
-            byte[] byteArray = new byte[recipeCommand.getImage().length];
-            int i = 0;
-            for (Byte wrappedByte : recipeCommand.getImage()) {
-                byteArray[i++] = wrappedByte;
-            }
-            response.setContentType("image/jpeg");
-            InputStream is = new ByteArrayInputStream(byteArray);
-            IOUtils.copy(is, response.getOutputStream());
-        }
-    }
+//    @GetMapping("recipe/{id}/recipeimage")
+//    public void renderImageFromDB(@PathVariable String id, HttpServletResponse response) throws Exception {
+//        RecipeCommand recipeCommand = recipeService.findCommandById(id).block();
+//
+//        if (recipeCommand.getImage() != null) {
+//            byte[] byteArray = new byte[recipeCommand.getImage().length];
+//            int i = 0;
+//            for (Byte wrappedByte : recipeCommand.getImage()) {
+//                byteArray[i++] = wrappedByte;
+//            }
+//            response.setContentType("image/jpeg");
+//            InputStream is = new ByteArrayInputStream(byteArray);
+//            IOUtils.copy(is, response.getOutputStream());
+//        }
+//    }
 }
