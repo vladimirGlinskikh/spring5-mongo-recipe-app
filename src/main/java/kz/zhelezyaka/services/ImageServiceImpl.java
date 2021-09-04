@@ -14,8 +14,8 @@ import java.io.IOException;
 public class ImageServiceImpl implements ImageService {
     private final RecipeReactiveRepository recipeReactiveRepository;
 
-    public ImageServiceImpl(RecipeReactiveRepository recipeReactiveRepository) {
-        this.recipeReactiveRepository = recipeReactiveRepository;
+    public ImageServiceImpl(RecipeReactiveRepository recipeService) {
+        this.recipeReactiveRepository = recipeService;
     }
 
     @Override
